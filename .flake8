@@ -1,0 +1,4 @@
+[flake8]
+exclude = .idea, .git, venv, __pycache__
+max-line-length = 120
+ignore = F401, F403
