@@ -18,16 +18,16 @@
 </head>
 <body>
 <div class="container-fluid">
-<!--    <p>Боря</p>-->
     <div class="row-lg-8">
-<!--        <p>Коля</p>-->
         <div class="col-lg-10">
             {% if messages %}
                 {% for message in messages %}
-                    {{ message }}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{ message }}
+<!--              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+            </div>
                 {% endfor %}
             {% endif %}
-<!--        <p>Витя</p>-->
         {% block content %}
         {% endblock %}
         </div>

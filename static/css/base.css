@@ -1,4 +1,14 @@
 div {
     #border: solid 3px black;
-    margin: 8% auto;
+    margin: 0 auto;
+}
+
+.login {
+    border: solid 1px darkgrey;
+    margin: 11% auto;
+    padding: 50px;
+}
+
+.login_but {
+    margin-left: 80%;
 }

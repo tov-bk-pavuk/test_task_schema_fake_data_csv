@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.shortcuts import redirect, render
 
 
 def user_login(request):
@@ -15,4 +15,3 @@ def user_login(request):
             messages.success(request, ('Wrong password or username'))
             return redirect('u_login')
     return render(request, 'u_auth/login.html')
-
