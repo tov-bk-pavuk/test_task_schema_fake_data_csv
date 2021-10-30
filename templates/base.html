@@ -27,12 +27,18 @@
       <li class="nav-item col-lg-8">
         <a class="nav-link" href="{% url 'home' %}">Schemas</a>
       </li>
+      {% if user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link disabled">Hello {{ 'User' }}</a>
+        <a class="nav-link disabled">Hello {{ user }}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'u_logout' %}">Logout</a>
       </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'u_login' %}">Login</a>
+      </li>
+      {% endif %}
     </ul>
     <!--Конец навигационной панели-->
 

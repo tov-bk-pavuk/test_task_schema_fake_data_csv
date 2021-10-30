@@ -3,6 +3,7 @@ from django.urls import include, path
 
 from schemas.views import home
 
+
 urlpatterns = [
     path('', home, name='home'),
     path('schemas/', include('schemas.urls')),

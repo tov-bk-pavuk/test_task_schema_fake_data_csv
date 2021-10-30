@@ -1,5 +1,6 @@
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 
@@ -18,4 +19,5 @@ def user_login(request):
 
 
 def user_logout(request):
-    pass
+    logout(request)
+    return redirect('u_login')
