@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<!--кнопка и форма с кол-вом-->
+<div class="container">
+  <div class="row">
+    <h2>Data Schemas</h2>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+      <form action="{% url 'new_schema' %}" method="get">
+        <button class="btn btn-success">New Schema</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--конец кнопки-->
+
+<!--основная таблица Тут будет цикл-->
+<div class="container">
+  <div class="row row-cols-auto">
+    <div class="col">#</div>
+    <div class="col">Title</div>
+    <div class="col">Modified</div>
+    <div class="col-lg-6">Actions</div>
+  </div>
+  <div class="row row-cols-auto">
+    <div class="col">1</div>
+    <div class="col">Customers</div>
+    <div class="col">21.10.2021</div>
+    <div class="col-lg-6"><a href="#">Download</a></div>
+  </div>
+</div>
+<!--конец основной таблицы-->
+
+{% endblock %}

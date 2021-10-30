@@ -1,5 +1,6 @@
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 
@@ -15,3 +16,8 @@ def user_login(request):
             messages.success(request, ('Wrong password or username'))
             return redirect('u_login')
     return render(request, 'u_auth/login.html')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('u_login')
