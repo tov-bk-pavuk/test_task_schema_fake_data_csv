@@ -1,10 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!--{% block %} {% endblock %}-->
-
 {% block title %}{% endblock %}
 
 {% block content %}
-<h2>Data sets</h2>
+
+<!--кнопка и форма с кол-вом-->
+<div class="container">
+  <div class="row">
+    <h2>Data sets</h2>
+    <div class="col-lg-8"></div>
+    <div class="col-lg-1">Rows:</div>
+    <div class="col-lg-1">500</div>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-success">Generate data</button>
+    </div>
+  </div>
+</div>
+<!--конец кнопки-->
+
+<!--основная таблица Тут будет цикл-->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">#</div>
+    <div class="col-lg-3">Created</div>
+    <div class="col-lg-3">Status</div>
+    <div class="col-lg-4">Actions</div>
+  </div>
+</div>
+<!--конец основной таблицы-->
+
 {% endblock %}

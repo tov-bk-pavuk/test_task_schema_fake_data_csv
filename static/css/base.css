@@ -12,3 +12,17 @@ div {
 .login_but {
     margin-left: 80%;
 }
+
+.container div {
+    #border: solid 2px green;
+}
+
+.row div {
+    #border: solid 2px red;
+    height: 60px;
+}
+
+form div {
+    height: 120px;
+    color: red;
+}

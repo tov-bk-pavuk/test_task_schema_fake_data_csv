@@ -22,16 +22,16 @@
     <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page"
-           href="#{# url 'data_sets' #}">FakeCSV</a>
+           href="{% url 'data_sets' %}">FakeCSV</a>
       </li>
       <li class="nav-item col-lg-8">
-        <a class="nav-link" href="#{# url 'data_schemas' #}">Schemas</a>
+        <a class="nav-link" href="{% url 'home' %}">Schemas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">Hello {{ 'User' }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#{# url 'u_logout' #}">Logout</a>
+        <a class="nav-link" href="{% url 'u_logout' %}">Logout</a>
       </li>
     </ul>
     <!--Конец навигационной панели-->
