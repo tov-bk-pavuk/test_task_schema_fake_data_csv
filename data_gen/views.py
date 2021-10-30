@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def data_sets(request):
+    return render(request, 'data_gen/data_sets.html')
+
+
+def data_gen(request):
+    pass

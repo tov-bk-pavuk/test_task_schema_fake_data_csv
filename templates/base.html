@@ -17,9 +17,30 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
+    <!--Навигационная панель-->
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page"
+           href="#{# url 'data_sets' #}">FakeCSV</a>
+      </li>
+      <li class="nav-item col-lg-8">
+        <a class="nav-link" href="#{# url 'data_schemas' #}">Schemas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Hello {{ 'User' }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#{# url 'u_logout' #}">Logout</a>
+      </li>
+    </ul>
+    <!--Конец навигационной панели-->
+
+<!--Основной контейнер-->
 <div class="container-fluid">
     <div class="row-lg-8">
         <div class="col-lg-10">
+
             {% if messages %}
                 {% for message in messages %}
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -29,9 +50,11 @@
                 {% endfor %}
             {% endif %}
         {% block content %}
+<!--            БЛОК КОНТЕНТА-->
         {% endblock %}
         </div>
     </div>
 </div>
+<!--конец основного контейнера-->
 </body>
 </html>

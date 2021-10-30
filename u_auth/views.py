@@ -15,3 +15,7 @@ def user_login(request):
             messages.success(request, ('Wrong password or username'))
             return redirect('u_login')
     return render(request, 'u_auth/login.html')
+
+
+def user_logout(request):
+    pass
