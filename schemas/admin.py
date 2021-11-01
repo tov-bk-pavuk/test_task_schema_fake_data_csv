@@ -6,7 +6,7 @@ from . import models
 @admin.register(models.Schema)
 class SchemaAdmin(admin.ModelAdmin):
     list_filter = ('name', 'column')
-    list_display = ['name']
+    list_display = ['name', 'modified']
     filter_horizontal = ['column']
 
 

@@ -29,6 +29,14 @@
     <div class="col-lg-3">Status</div>
     <div class="col-lg-4">Actions</div>
   </div>
+  {% for instance in object_list %}
+  <div class="row">
+    <div class="col-lg-2">{{ instance.pk }}</div>
+    <div class="col-lg-3">{{ instance.created }}</div>
+    <div class="col-lg-3">{{ instance.status }}</div>
+    <div class="col-lg-4"><a href="../{{ instance.url }}" download>Download</a></div>
+  </div>
+  {% endfor %}
 </div>
 <!--конец основной таблицы-->
 

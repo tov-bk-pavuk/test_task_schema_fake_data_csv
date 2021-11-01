@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+
+@admin.register(models.DataSetFile)
+class DataSetFileAdmin(admin.ModelAdmin):
+    list_filter = ('created', 'status')
+    list_display = ['created', 'status', 'url']

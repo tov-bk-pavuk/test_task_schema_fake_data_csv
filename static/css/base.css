@@ -14,7 +14,7 @@ div {
 }
 
 .container div {
-    #border: solid 2px green;
+    #border: solid 1px gainsboro;
 }
 
 .row div {

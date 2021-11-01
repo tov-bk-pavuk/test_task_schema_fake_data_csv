@@ -60,7 +60,7 @@ class Schema(models.Model):
         choices=string_character_choices,
         default=quotes_o,
     )
-
+    modified = models.DateField(auto_now=True)
     column = models.ManyToManyField(Column, blank=True)
 
     def __str__(self):
