@@ -1,9 +1,9 @@
 from data_gen import views
 
-from django.urls import include, path
+from django.urls import path
 
 
 urlpatterns = [
     path('', views.data_sets, name='data_sets'),
-    path('', views.data_gen, name='data_gen'),
+    path('data_gen', views.data_gen, name='data_gen'),
 ]

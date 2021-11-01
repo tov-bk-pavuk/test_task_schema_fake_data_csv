@@ -8,6 +8,7 @@ class Column(models.Model):
     email = 'EM'
     domain_name = 'DN'
     phone_number = 'PN'
+    company_name = 'CN'
 
     type_choices = [
         (undefined, 'Undefined'),
@@ -15,7 +16,8 @@ class Column(models.Model):
         (job, 'Job'),
         (email, 'Email'),
         (domain_name, 'Domain name'),
-        (phone_number, 'Phone_number'),
+        (phone_number, 'Phone number'),
+        (company_name, 'Company name'),
     ]
 
     name = models.CharField(max_length=100)
@@ -24,6 +26,7 @@ class Column(models.Model):
         choices=type_choices,
         default=undefined,
     )
+    order = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -38,8 +41,8 @@ class Schema(models.Model):
         (semicolon, 'Semicolon'),
     ]
 
-    quotes_o = '"'
-    quotes_d = "'"
+    quotes_o = "'"
+    quotes_d = '"'
 
     string_character_choices = [
         (quotes_o, 'Single quotes'),

@@ -13,7 +13,9 @@
     <div class="col-lg-1">Rows:</div>
     <div class="col-lg-1">500</div>
     <div class="col-lg-2">
-        <button type="button" class="btn btn-success">Generate data</button>
+      <form action="{% url 'data_gen' %}" method="get">
+        <button type="submit" class="btn btn-success">Generate data</button>
+      </form>
     </div>
   </div>
 </div>

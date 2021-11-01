@@ -12,6 +12,5 @@ class SchemaAdmin(admin.ModelAdmin):
 
 @admin.register(models.Column)
 class ColumnAdmin(admin.ModelAdmin):
-    list_filter = ('name', 'field_type')
-    list_display = ['name']
-    filter_horizontal = ['field_type']
+    list_filter = ('order', 'name', 'field_type')
+    list_display = ['name', 'order']
