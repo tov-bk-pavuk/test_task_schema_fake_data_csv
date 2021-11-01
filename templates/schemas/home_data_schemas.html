@@ -21,17 +21,22 @@
 <!--основная таблица Тут будет цикл-->
 <div class="container">
   <div class="row row-cols-auto">
-    <div class="col">#</div>
-    <div class="col">Title</div>
-    <div class="col">Modified</div>
-    <div class="col-lg-6">Actions</div>
+    <div class="col-lg-1">№</div>
+    <div class="col-lg-5">Title</div>
+    <div class="col-lg-3">Modified</div>
+    <div class="col-lg-3">Actions</div>
   </div>
+  {% for instance in object_list %}
   <div class="row row-cols-auto">
-    <div class="col">1</div>
-    <div class="col">Customers</div>
-    <div class="col">21.10.2021</div>
-    <div class="col-lg-6"><a href="#">Download</a></div>
+    <div class="col-lg-1">{{ instance.id }}</div>
+    <div class="col-lg-5">{{ instance.name }}</div>
+    <div class="col-lg-3">{{ instance.modified }}</div>
+    <div class="col-lg-3">
+      <a href="#">Edit</a>
+      <a href="#">Delete</a>
+    </div>
   </div>
+  {% endfor %}
 </div>
 <!--конец основной таблицы-->
 
