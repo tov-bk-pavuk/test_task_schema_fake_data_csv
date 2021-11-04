@@ -11,40 +11,15 @@
   {% csrf_token %}
 
   {{ form.as_table}}
+
   <button type="submit" class="btn btn-primary">Submit</button>
-    <h2>Schema columns</h2>
 
-    {{ formset.management_form }}
-    {% for form in formset %}
-  <div class="row">
-    <div class="col">
-        {{ form }}
-    </div>
-  </div>
-    {% endfor %}
-  <div class="row">
-    <div class="col">
-      <button type="button" class="btn btn-primary">Add column</button>
-    </div>
-  </div>
+  <h2>Schema columns</h2>
 
-  </div>
+  {{ formset.as_table }}
+
+  <button type="button" class="btn btn-primary">Add column</button>
 </form>
 <!--конец формы схемы-->
-</br></br></br>
-<!--форма колонок схемы-->
-<!--<h2>Schema columns</h2>-->
-<!--<form>-->
-<!--  {{ formset.management_form }}-->
-<!--    {% for form in formset %}-->
-<!--  <div class="row">-->
-<!--    <div class="col">-->
-<!--        {{ form }}-->
-<!--    </div>-->
-<!--  </div>-->
-<!--    {% endfor %}-->
-<!--    <button type="submit" class="btn btn-primary">Add column</button>-->
-<!--</form>-->
-<!--конец формы колонок схемы-->
 
 {% endblock %}

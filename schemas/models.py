@@ -61,7 +61,7 @@ class Column(models.Model):
         default=undefined,
     )
     order = models.PositiveSmallIntegerField(default=0)
-    schema = models.ForeignKey(Schema, on_delete=models.CASCADE, blank=True, null=True)
+    schema = models.ForeignKey(Schema, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

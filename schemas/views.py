@@ -31,13 +31,13 @@ class SchemasListView(ListView):
 
 def create_schema(request):
     scheme_form_set = inlineformset_factory(Schema, Column,
-                                            fields=('name', 'field_type', 'order'), max_num=1)
+                                            fields=('name', 'field_type', 'order', 'schema'), max_num=1)
     if request.method == 'POST':
-        formset = scheme_form_set(request.POST)
         form = SchemaModelForm(request.POST)
+        formset = scheme_form_set(request.POST)
         if form.is_valid() and formset.is_valid():
             form.save()
-            formset.save()
+            formset.is_valid()
             return '/'
     formset = scheme_form_set()
     form = SchemaModelForm()
@@ -45,36 +45,20 @@ def create_schema(request):
     return render(request, 'schemas/new_schema.html', context)
 
 
-def get_name(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = NameForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = NameForm()
-
-    return render(request, 'name.html', {'form': form})
-
-
 def update_schema(request, pk):
     scheme_form_set = inlineformset_factory(Schema, Column,
-            fields=('name', 'field_type', 'order'))
+            fields=('name', 'field_type', 'order', 'schema'), max_num=1)
     schema = Schema.objects.get(id=pk)
     formset = scheme_form_set(instance=schema)
+    form = SchemaModelForm(instance=schema)
     if request.method == 'POST':
         formset = scheme_form_set(request.POST, schema)
-        if formset.is_valid():
+        form = SchemaModelForm(request.POST, schema)
+        if form.is_valid() and formset.is_valid():
+            form.save()
             formset.save()
             return '/'
-    context = {'formset': formset}
+    context = {'formset': formset, 'form': form}
     return render(request, 'schemas/new_schema.html', context)
 
 
