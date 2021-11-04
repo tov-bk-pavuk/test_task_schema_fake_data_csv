@@ -18,7 +18,7 @@ class Schema(models.Model):
         (quotes_d, 'Double quotes'),
     ]
 
-    name = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False, unique=True)
     separator = models.CharField(
         max_length=1,
         choices=sep_choices,
