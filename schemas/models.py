@@ -18,7 +18,7 @@ class Schema(models.Model):
         (quotes_d, 'Double quotes'),
     ]
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=False)
     separator = models.CharField(
         max_length=1,
         choices=sep_choices,
@@ -54,7 +54,7 @@ class Column(models.Model):
         (company_name, 'Company name'),
     ]
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=False)
     field_type = models.CharField(
         max_length=2,
         choices=type_choices,

@@ -7,53 +7,44 @@
 
 <h2>New Schema</h2>
 <!--форма схемы-->
-<form>
+<form method="post">
+  {% csrf_token %}
+
+  {{ form.as_table}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+    <h2>Schema columns</h2>
+
+    {{ formset.management_form }}
+    {% for form in formset %}
   <div class="row">
     <div class="col">
-      <label>Name</label>
-      <input type="text" class="form-control" placeholder="First name">
+        {{ form }}
     </div>
+  </div>
+    {% endfor %}
+  <div class="row">
     <div class="col">
-      <label>Column separator</label>
-      <input type="text" class="form-control" placeholder="Last name">
+      <button type="button" class="btn btn-primary">Add column</button>
     </div>
-    <div class="col">
-      <label>String character</label>
-      <input type="text" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+  </div>
+
   </div>
 </form>
 <!--конец формы схемы-->
-
+</br></br></br>
 <!--форма колонок схемы-->
-<h2>Schema columns</h2>
-<form>
-  <div class="row">
-    <div class="col">
-      <label>Name</label>
-      <input type="text" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <label>Type</label>
-      <input type="text" class="form-control" placeholder="Last name">
-    </div>
-      <div class="col">
-      <label>From to</label>
-      <input type="text" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <label>Order</label>
-      <input type="text" class="form-control" placeholder="Last name">
-    </div>
-    <div class="col">
-      <a style="color:red;" href="#">delete</a>
-    </div>
-  </div>
-    <button type="submit" class="btn btn-primary">Add column</button>
-</form>
+<!--<h2>Schema columns</h2>-->
+<!--<form>-->
+<!--  {{ formset.management_form }}-->
+<!--    {% for form in formset %}-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--        {{ form }}-->
+<!--    </div>-->
+<!--  </div>-->
+<!--    {% endfor %}-->
+<!--    <button type="submit" class="btn btn-primary">Add column</button>-->
+<!--</form>-->
 <!--конец формы колонок схемы-->
 
 {% endblock %}
