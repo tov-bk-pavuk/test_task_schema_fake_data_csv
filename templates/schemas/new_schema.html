@@ -12,16 +12,16 @@
 
   {{ form.as_table}}
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" name="save" value="Save" class="btn btn-primary">Submit</button>
 
   <h2>Schema columns</h2>
 
   {{ formset.as_p }}
 
+    <button type="submit" name="add" value="Add" class="btn btn-primary">Add column</button>
+
 </form>
-<form action="{% url 'schema_add_colon' instance.id %}">
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
 <!--конец формы схемы-->
 
 {% endblock %}
