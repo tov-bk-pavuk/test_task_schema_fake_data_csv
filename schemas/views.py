@@ -36,6 +36,8 @@ class SchemasListView(ListView):
 def create_schema(request):
     scheme_form_set = inlineformset_factory(Schema, Column,
                                             fields=('name', 'field_type', 'order'), extra=1)
+    formset = scheme_form_set()
+    form = SchemaModelForm()
     if request.method == 'POST':
         form = SchemaModelForm(request.POST)
         if form.is_valid():
@@ -46,8 +48,6 @@ def create_schema(request):
             if formset.is_valid():
                 formset.save()
                 return HttpResponseRedirect(reverse('home'))
-    formset = scheme_form_set()
-    form = SchemaModelForm()
     context = {'formset': formset, 'form': form}
     return render(request, 'schemas/new_schema.html', context)
 
