@@ -1,6 +1,40 @@
 from django.db import models
 
 
+class Schema(models.Model):
+    coma = ','
+    semicolon = ';'
+
+    sep_choices = [
+        (coma, 'Coma'),
+        (semicolon, 'Semicolon'),
+    ]
+
+    quotes_o = "'"
+    quotes_d = '"'
+
+    string_character_choices = [
+        (quotes_o, 'Single quotes'),
+        (quotes_d, 'Double quotes'),
+    ]
+
+    name = models.CharField(max_length=100, blank=False, unique=True)
+    separator = models.CharField(
+        max_length=1,
+        choices=sep_choices,
+        default=coma,
+    )
+    string_character = models.CharField(
+        max_length=1,
+        choices=string_character_choices,
+        default=quotes_o,
+    )
+    modified = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Column(models.Model):
     undefined = 'UD'
     full_name = 'FN'
@@ -20,48 +54,14 @@ class Column(models.Model):
         (company_name, 'Company name'),
     ]
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=False)
     field_type = models.CharField(
         max_length=2,
         choices=type_choices,
         default=undefined,
     )
     order = models.PositiveSmallIntegerField(default=0)
-
-    def __str__(self):
-        return self.name
-
-
-class Schema(models.Model):
-    coma = ','
-    semicolon = ';'
-
-    sep_choices = [
-        (coma, 'Coma'),
-        (semicolon, 'Semicolon'),
-    ]
-
-    quotes_o = "'"
-    quotes_d = '"'
-
-    string_character_choices = [
-        (quotes_o, 'Single quotes'),
-        (quotes_d, 'Double quotes'),
-    ]
-
-    name = models.CharField(max_length=100)
-    separator = models.CharField(
-        max_length=1,
-        choices=sep_choices,
-        default=coma,
-    )
-    string_character = models.CharField(
-        max_length=1,
-        choices=string_character_choices,
-        default=quotes_o,
-    )
-    modified = models.DateField(auto_now=True)
-    column = models.ManyToManyField(Column, blank=True)
+    schema = models.ForeignKey(Schema, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

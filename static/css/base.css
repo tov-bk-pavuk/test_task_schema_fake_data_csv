@@ -4,7 +4,7 @@ div {
 }
 
 .login {
-    border: solid 1px darkgrey;
+    #border: solid 1px darkgrey;
     margin: 11% auto;
     padding: 50px;
 }
@@ -23,6 +23,7 @@ div {
 }
 
 form div {
+    #border: dotted 2px green;
     height: 120px;
     color: red;
 }

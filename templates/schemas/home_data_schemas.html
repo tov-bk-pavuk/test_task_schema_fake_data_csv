@@ -32,8 +32,8 @@
     <div class="col-lg-5">{{ instance.name }}</div>
     <div class="col-lg-3">{{ instance.modified }}</div>
     <div class="col-lg-3">
-      <a href="#">Edit</a>
-      <a href="#">Delete</a>
+      <a href="{% url 'upd_schema' instance.id %}">Edit</a>
+      <a href="{% url 'dlt_schema' instance.id %}">Delete</a>
     </div>
   </div>
   {% endfor %}
