@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}New Schema{% endblock %}
+
+{% block content %}
+
+<h2>New Schema</h2>
+<!--форма схемы-->
+<form method="post">
+  {% csrf_token %}
+
+  {{ form.as_table}}
+
+  <button type="submit" name="save" value="Save" class="btn btn-primary">Submit</button>
+
+  <h2>Schema columns</h2>
+
+  {{ formset.as_p }}
+
+</form>
+
+<form action=" url 'upd_schema' instance.id ">
+  <button type="submit" name="add" value="Add" class="btn btn-primary">Add column</button>
+</form>
+
+<!--конец формы схемы-->
+
+{% endblock %}
