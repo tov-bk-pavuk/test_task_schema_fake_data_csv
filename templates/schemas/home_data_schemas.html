@@ -29,7 +29,7 @@
   {% for instance in object_list %}
   <div class="row row-cols-auto">
     <div class="col-lg-1">{{ instance.id }}</div>
-    <div class="col-lg-5">{{ instance.name }}</div>
+    <div class="col-lg-5"><a href="#">{{ instance.name }}</a> data sets</div>
     <div class="col-lg-3">{{ instance.modified }}</div>
     <div class="col-lg-3">
       <a href="{% url 'upd_schema' instance.id %}">Edit</a>
