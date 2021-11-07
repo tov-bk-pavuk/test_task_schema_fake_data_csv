@@ -40,7 +40,9 @@ def data_gen(request):
     str_char = models.Schema.objects.get(pk=id_pk).string_character
     columns = models.Schema.objects.get(pk=id_pk).column_set.all().order_by('order', 'name')
 
-    DataSetFile.objects.get_or_create(url=f'static/media/{name}.csv')
+    # instance = models.Schema.objects.get(pk=id_pk)
+
+    DataSetFile.objects.get_or_create(url=f'static/media/{name}.csv')  # , schema=instance
 
     with open(f'static/media/{name}.csv', 'w') as f:
         writer = csv.writer(f, delimiter=sep, quotechar=str_char)
