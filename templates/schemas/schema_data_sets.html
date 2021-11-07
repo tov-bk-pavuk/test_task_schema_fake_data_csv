@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ object.schema.name }} data sets{% endblock %}
 
 {% block content %}
 
 <!--кнопка и форма с кол-вом-->
 <div class="container">
   <div class="row">
-    <h2>{{ object.schema }} Data sets</h2>
+    <h2>{{ schema.name }} Data Sets</h2>
     <div class="col-lg-8"></div>
     <div class="col-lg-1">Rows:</div>
     <div class="col-lg-1"></div>
@@ -31,13 +31,14 @@
     <div class="col-lg-3">Status</div>
     <div class="col-lg-3">Actions</div>
   </div>
-
+  {% for file in schema.datasetfile_set.all %}
   <div class="row">
-    <div class="col-lg-2">{{ object.pk }}</div>
-    <div class="col-lg-2">{{ object.created }}</div>
-    <div class="col-lg-3">{{ object.status }}</div>
-    <div class="col-lg-3"><a href="../../{{ object.url }}" download>Download</a></div>
+    <div class="col-lg-2">{{ file.id }}</div>
+    <div class="col-lg-2">{{ file.created }}</div>
+    <div class="col-lg-3">{{ file.status }}</div>
+    <div class="col-lg-3"><a href="../../{{ file.url }}" download>Download</a></div>
   </div>
+  {% endfor %}
 
 </div>
 <!--конец основной таблицы-->
