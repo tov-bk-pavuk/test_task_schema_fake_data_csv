@@ -1,15 +1,15 @@
+from data_gen.forms import AmountForm
+from data_gen.views import data_gen_new
+
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import DetailView, DeleteView, ListView
+from django.views.generic import DeleteView, ListView
 
 from .forms import SchemaModelForm
 from .models import Column, Schema
-
-from data_gen.forms import AmountForm
-from data_gen.views import data_gen_new, fake, col_type
 
 
 class SchemasListView(ListView):
@@ -18,6 +18,7 @@ class SchemasListView(ListView):
     fields = ['name', 'separator', 'string_character', 'column']
 
 
+@login_required(login_url='/users/u_login')
 def detail_schema(request, pk):
     if request.method == 'POST':
         form = AmountForm(request.POST)
@@ -26,6 +27,7 @@ def detail_schema(request, pk):
             schema = Schema.objects.get(id=pk)
             context = {'schema': schema, 'form': form}
             data_gen_new(pk, amount)
+            # messages.success(request, ('Данные генерируются'))
             return render(request, 'schemas/schema_data_sets.html', context)
     form = AmountForm()
     schema = Schema.objects.get(id=pk)
