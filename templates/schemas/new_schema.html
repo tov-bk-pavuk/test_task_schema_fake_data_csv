@@ -10,15 +10,20 @@
 <form method="post">
   {% csrf_token %}
 
-  {{ form.as_table}}
+  {% for field in form %}
+  <p>{{ field.label }} {{ field }}</p>
+  {% endfor %}
 
-  <button type="submit" name="save" value="Save" class="btn btn-primary">Submit</button>
+  <button type="submit" name="save_schema" value="Save" class="btn btn-primary">Submit</button>
 
   <h2>Schema columns</h2>
 
-  {{ formset.as_p }}
+    {{ formset.management_form }}
+  {% for field in formset %}
+  <p>{{ field.label }} {{ field }}</p>
+  {% endfor %}
 
-    <button type="submit" name="add" value="Add" class="btn btn-primary">Add column</button>
+    <button type="submit" name="add_column" value="Add" class="btn btn-primary">Add column</button>
 
 </form>
 

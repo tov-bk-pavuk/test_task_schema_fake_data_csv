@@ -2,8 +2,9 @@ import csv
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import ListView
 
 from faker import Faker
@@ -30,7 +31,7 @@ class DataSetListView(ListView):
 @login_required(login_url='/users/u_login')
 def data_gen(request):
     # Create the HttpResponse object with the appropriate CSV header.
-    id_pk = 2  # Временные переменные нужно поулчать из ссылки
+    id_pk = 4  # Временные переменные нужно поулчать из ссылки
     amount = 1000  # Временные переменные
 
     name = models.Schema.objects.get(pk=id_pk).name
@@ -41,7 +42,7 @@ def data_gen(request):
 
     sep = models.Schema.objects.get(pk=id_pk).separator
     str_char = models.Schema.objects.get(pk=id_pk).string_character
-    columns = models.Schema.objects.get(pk=id_pk).column.all().order_by('order', 'name')
+    columns = models.Schema.objects.get(pk=id_pk).column_set.all().order_by('order', 'name')
 
     fake = Faker()
 
@@ -74,4 +75,4 @@ def data_gen(request):
         # myfile.write(str(response))
 
     # messages.success(request, ('Данные генерируются'))
-    return render(request, 'data_gen/data_sets.html')
+    return HttpResponseRedirect(reverse('data_sets'))  # render(request, 'data_gen/data_sets.html')

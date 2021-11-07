@@ -28,9 +28,9 @@ def create_schema(request):
             formset = scheme_form_set(request.POST, request.FILES, instance=instance)
             if formset.is_valid():
                 formset.save()
-                if 'save' in request.POST:
+                if request.POST.get('save_schema'):
                     return HttpResponseRedirect(reverse('home'))
-                if 'add' in request.POST:
+                if request.POST.get('add_column'):
                     return HttpResponseRedirect(reverse('upd_schema', args=[pk]))
     form = SchemaModelForm()  # первый случай загрузки формы при нажатии на ссылку
     formset = scheme_form_set()
@@ -49,7 +49,7 @@ def update_schema(request, pk):
             formset = scheme_form_set(request.POST, request.FILES, instance=instance)
             if formset.is_valid():
                 formset.save()
-                if 'save' in request.POST:
+                if 'save_schema' in request.POST:
                     return HttpResponseRedirect(reverse('home'))
     instance = Schema.objects.get(id=pk)
     formset = scheme_form_set(instance=instance)
