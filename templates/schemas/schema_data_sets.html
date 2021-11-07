@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ object.schema.name }} data sets{% endblock %}
+{% block title %}{{ schema.name }} data sets{% endblock %}
 
 {% block content %}
 
@@ -12,16 +12,16 @@
     <div class="col-lg-8"></div>
     <div class="col-lg-1">Rows:</div>
     <div class="col-lg-1"></div>
-    <div class="col-lg-2">
-      <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-success">Generate data</button>
-      </form>
-    </div>
+    <div class="col-lg-2"></div>
   </div>
 </div>
 <!--конец кнопки-->
+
+<form action="{% url 'detail_schema' schema.id %}" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button class="btn btn-success">Generate data</button>
+</form>
 
 <!--основная таблица Тут будет цикл-->
 <div class="container">

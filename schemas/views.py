@@ -7,7 +7,9 @@ from django.views.generic import DetailView, DeleteView, ListView
 
 from .forms import SchemaModelForm
 from .models import Column, Schema
-from data_gen.models import DataSetFile
+
+from data_gen.forms import AmountForm
+from data_gen.views import data_gen_new, fake, col_type
 
 
 class SchemasListView(ListView):
@@ -16,16 +18,18 @@ class SchemasListView(ListView):
     fields = ['name', 'separator', 'string_character', 'column']
 
 
-# class SchemaDataSetDetailView(DetailView):
-#     model = DataSetFile
-#     pk_url_kwarg = 'pk'
-#     template_name = 'schemas/schema_data_sets.html'
-
-
 def detail_schema(request, pk):
+    if request.method == 'POST':
+        form = AmountForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['data_gen_amount']
+            schema = Schema.objects.get(id=pk)
+            context = {'schema': schema, 'form': form}
+            data_gen_new(pk, amount)
+            return render(request, 'schemas/schema_data_sets.html', context)
+    form = AmountForm()
     schema = Schema.objects.get(id=pk)
-    datasetfile = DataSetFile.objects.get(id=pk)
-    context = {'datasetfile': datasetfile, 'schema': schema}
+    context = {'schema': schema, 'form': form}
     return render(request, 'schemas/schema_data_sets.html', context)
 
 
