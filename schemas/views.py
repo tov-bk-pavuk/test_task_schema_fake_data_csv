@@ -3,7 +3,7 @@ from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import DeleteView, ListView
+from django.views.generic import DetailView, DeleteView, ListView
 
 from .forms import SchemaModelForm
 from .models import Column, Schema
@@ -13,6 +13,12 @@ class SchemasListView(ListView):
     model = Schema
     template_name = 'schemas/home_data_schemas.html'
     fields = ['name', 'separator', 'string_character', 'column']
+
+
+class SchemaDataSetDetailView(DetailView):
+    model = Schema
+    pk_url_kwarg = 'pk'
+    template_name = 'schemas/schema_data_sets.html'
 
 
 def create_schema(request):

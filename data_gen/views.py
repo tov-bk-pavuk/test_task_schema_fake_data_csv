@@ -23,11 +23,6 @@ def data_upload(request):
     return
 
 
-class DataSetListView(ListView):
-    model = DataSetFile
-    template_name = 'data_gen/data_sets.html'
-
-
 class SchemaDataSetListView(ListView):
     model = DataSetFile
     template_name = 'data_gen/data_sets.html'
