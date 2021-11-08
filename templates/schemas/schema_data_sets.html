@@ -9,19 +9,17 @@
 <div class="container">
   <div class="row">
     <h2>{{ schema.name }} Data Sets</h2>
-    <div class="col-lg-8"></div>
-    <div class="col-lg-1">Rows:</div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2"></div>
+    <div class="col-lg-6"></div>
+    <div class="col-lg-4">
+      <form action="{% url 'detail_schema' schema.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+    </div>
+    <div class="col-lg-2"><button class="btn btn-success">Generate data</button></div>
+    </form>
   </div>
 </div>
 <!--конец кнопки-->
-
-<form action="{% url 'detail_schema' schema.id %}" method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button class="btn btn-success">Generate data</button>
-</form>
 
 <!--основная таблица Тут будет цикл-->
 <div class="container">
