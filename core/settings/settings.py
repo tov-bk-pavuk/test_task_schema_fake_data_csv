@@ -60,9 +60,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-db_from_env = dj-database-url.config()
-DATABASE['default'].update(db_from_env)
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,6 +67,7 @@ DATABASE['default'].update(db_from_env)
 #     }
 # }
 
+DATABASES = {'default': dj_database_url.config()}  # conn_max_age=600, ssl_require=True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
