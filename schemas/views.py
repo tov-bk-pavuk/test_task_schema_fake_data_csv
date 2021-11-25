@@ -25,7 +25,7 @@ def detail_schema(request, pk):
         form = AmountForm(request.POST)
         if form.is_valid():
             amount = form.cleaned_data['data_gen_amount']
-            data_gen_new.apply_async((pk, amount))
+            data_gen_new(pk, amount)
             schema = Schema.objects.get(id=pk)
             context = {'schema': schema, 'form': form}
             # messages.success(request, ('Данные генерируются'))
